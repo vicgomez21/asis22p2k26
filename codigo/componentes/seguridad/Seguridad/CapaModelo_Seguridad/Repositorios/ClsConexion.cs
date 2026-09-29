@@ -21,7 +21,7 @@ namespace CapaModelo_Seguridad
 
         public ClsConexion()
         {
-            _ConnectionString = "Dsn=EmbutidosS.A";
+            _ConnectionString = "Dsn=segundoparcial2k26c";
         }
 
         protected OdbcConnection SeguridadMetObtenerConexion()

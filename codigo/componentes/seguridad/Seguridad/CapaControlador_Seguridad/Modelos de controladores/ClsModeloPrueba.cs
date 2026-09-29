@@ -34,11 +34,11 @@ namespace CapaControlador_Seguridad
         public EstadoEntidad Estado { private get; set; }
         private List<ClsModeloPrueba> _ListaVideo;
 
-        public int IdVideo { get => _CodigoBodega; set => _CodigoBodega = value; }
+        public int CodigoBodega { get => _CodigoBodega; set => _CodigoBodega = value; }
 
         [Required(ErrorMessage = "El título es obligatorio")]
         [StringLength(150, MinimumLength = 1)]
-        public string TituloVideo { get => _NombreBodega; set => _NombreBodega = value; }
+        public string NombreBodega { get => _NombreBodega; set => _NombreBodega = value; }
 
         
         public bool IsActive { get => _IsActive; set => _IsActive = value; }

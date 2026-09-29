@@ -72,6 +72,7 @@ namespace CapaVista_Seguridad
             var MapaBotonesMDI = new Dictionary<Control, (int, int)>
             {
                 { SeguridadBtnEmpleados,(4, 4)},
+                { SeguridadBtnBodega,(4,16)},
                 { SeguridadBtnUsuarios,(4, 5)},
                 { SeguridadBtnModulos,(4, 6)},
                 { SeguridadBtnAplicaciones,(4, 7)},
@@ -241,15 +242,15 @@ namespace CapaVista_Seguridad
 
         private void SeguridadBtnEmpleados_Click(object sender, EventArgs e)
         {
-         //   if (!ClsSeguridadFormHelper.SeguridadMetTieneAcceso(IdModulo: 4, IdAplicacion: 4))
-         //   {
-          //      MessageBox.Show("No tienes acceso a este módulo.",
-          //          "Acceso denegado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-           //     return;
-         //   }
+            if (!ClsSeguridadFormHelper.SeguridadMetTieneAcceso(IdModulo: 4, IdAplicacion: 4))
+            {
+                MessageBox.Show("No tienes acceso a este módulo.",
+                    "Acceso denegado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+           }
+            FrmMantenimientoEmpleado Empleado = new FrmMantenimientoEmpleado();
+            Empleado.ShowDialog();
 
-            FrmNavegador Empleados = new FrmNavegador();
-            Empleados.ShowDialog();
         }
 
         private void SeguridadBtnAplicaciones_Click(object sender, EventArgs e)
@@ -304,6 +305,27 @@ namespace CapaVista_Seguridad
         private void SeguridadBtnAyudas_Click(object sender, EventArgs e)
         {
             Help.ShowHelp(this, "C:/SeguridadAyudas/SeguridadAyudas.chm", "MDI_Seguridad.html");
+        }
+
+       
+
+        private void FrmMDISeguridad_Load_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void SeguridadBtnBodega_Click(object sender, EventArgs e)
+        {
+            FrmNavegador bodegas = new FrmNavegador();
+            bodegas.ShowDialog();
+
+        }
+
+        private void SeguridadBtnBodega_Click_1(object sender, EventArgs e)
+        {
+            FrmNavegador bodegas = new FrmNavegador();
+            bodegas.ShowDialog();
+
         }
     }
 }

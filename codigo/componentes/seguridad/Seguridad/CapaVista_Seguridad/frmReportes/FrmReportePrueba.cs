@@ -22,7 +22,7 @@ namespace CapaVista_Seguridad.frmReportes
 
         private void FrmReportePrueba_Load(object sender, EventArgs e)
         {
-            ReportDataSource reportDataSourceUsuario = new ReportDataSource("pruebas", Prueba.SeguridadMetObtenerTodos());
+            ReportDataSource reportDataSourceUsuario = new ReportDataSource("Bodega", Prueba.SeguridadMetObtenerTodos());
             reportViewer1.LocalReport.ReportEmbeddedResource = "CapaVista_Seguridad.Reportes.Reporteprueba.rdlc";
             reportViewer1.LocalReport.DataSources.Clear();
             reportViewer1.LocalReport.DataSources.Add(reportDataSourceUsuario);
