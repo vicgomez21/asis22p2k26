@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using CapaModelo_Seguridad.Entidades;
 
 /*
  * ==================================================================
@@ -13,20 +13,14 @@ using System.Threading.Tasks;
  * Fecha : 22/09/2026
  * ==================================================================
  * Propósito :
- * Aqui en esta clase se encuentran los get y set necesarios y 
- * utilizados en la vista del formulario
+ *  La clase de IRepositorioEmpleado en la CapaModelo_Seguridad
+ *  aqui se encuentra la interfaz generica dedicha ClsEmpleado
  * ===================================================================
 */
 
-namespace CapaModelo_Seguridad.Entidades
+namespace CapaModelo_Seguridad.Contratos
 {
-    public class ClsPrueba
-    {
-        public int CodigoBodega { get; set; }
-        public string NombreBodega { get; set; }
-        
-        public bool IsActive { get; set; }
-        public DateTime CreatedAt { get; set; }
-        public DateTime UpdatedAt { get; set; }
-    }
+    public interface IRepositorioPrueba: IRepositorioGenerico<ClsPrueba> 
+    { }
+    
 }

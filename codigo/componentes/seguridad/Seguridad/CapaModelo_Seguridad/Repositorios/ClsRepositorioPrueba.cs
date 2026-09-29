@@ -34,25 +34,18 @@ namespace CapaModelo_Seguridad.Repositorios
 
         public ClsRepositorioPrueba()
         {
-            _SelectAll = "SELECT * FROM video";
-            _Insert = "INSERT INTO video VALUES (DEFAULT, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, DEFAULT, DEFAULT, DEFAULT)";
-            _Update = "UPDATE video SET titulo=?, genero=?, precio_renta=?, stock=?, codigo=?, director=?, anio=?, clasificacion=?, duracion=?, idioma=? WHERE id_video=?";
+            _SelectAll = "SELECT * FROM tblbodegas";
+            _Insert = "INSERT INTO tblbodegas VALUES (DEFAULT, ?,DEFAULT, DEFAULT, DEFAULT)";
+            _Update = "UPDATE video SET nombre_bodega=? WHERE id_video=?";
             _Delete = "DELETE FROM tblEmpleado WHERE idEmpleado=?";
         }
 
         public int SeguridadMetAgregar(ClsPrueba Entidad)
         {
             var Parametros = new List<OdbcParameter>();
-            Parametros.Add(new OdbcParameter("p_titulo", Entidad.TituloVideo));
-            Parametros.Add(new OdbcParameter("p_genero", Entidad.GeneroVideo));
-            Parametros.Add(new OdbcParameter("p_precio_renta", Entidad.PrecioRentaVideo));
-            Parametros.Add(new OdbcParameter("p_stock", Entidad.StockVideo));
-            Parametros.Add(new OdbcParameter("p_codigo", Entidad.CodigoVideo));
-            Parametros.Add(new OdbcParameter("p_director", Entidad.DirectorVideo));
-            Parametros.Add(new OdbcParameter("p_anio", Entidad.AnioVideo));
-            Parametros.Add(new OdbcParameter("p_clasificacion", Entidad.ClasificacionVideo));
-            Parametros.Add(new OdbcParameter("p_duracion", Entidad.DuracionVideo));
-            Parametros.Add(new OdbcParameter("p_idioma", Entidad.IdiomaVideo));
+            Parametros.Add(new OdbcParameter("p_codigo_bodega", Entidad.CodigoBodega));
+            Parametros.Add(new OdbcParameter("p_nombre_bodega", Entidad.NombreBodega));
+           
           
 
             return SeguridadMetEjecucionNonQuery(_Insert, Parametros, CommandType.Text);
@@ -61,17 +54,9 @@ namespace CapaModelo_Seguridad.Repositorios
         public int SeguridadMetEditar(ClsPrueba Entidad)
         {
             var Parametros = new List<OdbcParameter>();
-            Parametros.Add(new OdbcParameter("p_titulo", Entidad.TituloVideo));
-            Parametros.Add(new OdbcParameter("p_genero", Entidad.GeneroVideo));
-            Parametros.Add(new OdbcParameter("p_precio_renta", Entidad.PrecioRentaVideo));
-            Parametros.Add(new OdbcParameter("p_stock", Entidad.StockVideo));
-            Parametros.Add(new OdbcParameter("p_codigo", Entidad.CodigoVideo));
-            Parametros.Add(new OdbcParameter("p_director", Entidad.DirectorVideo));
-            Parametros.Add(new OdbcParameter("p_anio", Entidad.AnioVideo));
-            Parametros.Add(new OdbcParameter("p_clasificacion", Entidad.ClasificacionVideo));
-            Parametros.Add(new OdbcParameter("p_duracion", Entidad.DuracionVideo));
-            Parametros.Add(new OdbcParameter("p_idioma", Entidad.IdiomaVideo));
-            Parametros.Add(new OdbcParameter("p_id_video", Entidad.IdVideo));
+            Parametros.Add(new OdbcParameter("p_codigo_bodega", Entidad.CodigoBodega));
+            Parametros.Add(new OdbcParameter("p_nombre_bodega", Entidad.NombreBodega));
+
 
             return SeguridadMetEjecucionNonQuery(_Update, Parametros, CommandType.Text);
         }
@@ -79,7 +64,7 @@ namespace CapaModelo_Seguridad.Repositorios
         public int SeguridadMetRemover(ClsPrueba Entidad)
         {
             var Parametros = new List<OdbcParameter>();
-            Parametros.Add(new OdbcParameter("p_id_video", Entidad.IdVideo));
+            Parametros.Add(new OdbcParameter("p_codigo_bodega", Entidad.CodigoBodega));
 
             return SeguridadMetEjecucionNonQuery(_Delete, Parametros, CommandType.Text);
         }
@@ -91,21 +76,12 @@ namespace CapaModelo_Seguridad.Repositorios
             foreach (DataRow Fila in TablaDatos.Rows)
             {
                 var Empleado = new ClsPrueba();
-                Empleado.IdVideo = Convert.ToInt32(Fila[0]);
-                Empleado.TituloVideo = Fila[1].ToString();
-                Empleado.GeneroVideo = Fila[2].ToString();
-                //datos double y float
-                Empleado.PrecioRentaVideo =  Convert.ToDouble(Fila[3]);
-                Empleado.StockVideo = Convert.ToInt32(Fila[4]);
-                Empleado.CodigoVideo = Fila[5].ToString();
-                Empleado.DirectorVideo = Fila[6].ToString();
-                Empleado.AnioVideo = Convert.ToInt32(Fila[7]); 
-                Empleado.ClasificacionVideo = Fila[8].ToString();
-                Empleado.DuracionVideo = Convert.ToInt32(Fila[9]);
-                Empleado.IdiomaVideo = Fila[10].ToString();
-                Empleado.IsActive = Convert.ToBoolean(Fila[11]);
-                Empleado.CreatedAt = Convert.ToDateTime(Fila[12]);
-                Empleado.UpdatedAt = Convert.ToDateTime(Fila[13]);
+                Empleado.CodigoBodega = Convert.ToInt32(Fila[0]);
+                Empleado.NombreBodega = Fila[1].ToString();
+                
+                Empleado.IsActive = Convert.ToBoolean(Fila[2]);
+                Empleado.CreatedAt = Convert.ToDateTime(Fila[3]);
+                Empleado.UpdatedAt = Convert.ToDateTime(Fila[4]);
                 ListaEmpleados.Add(Empleado);
             }
             TablaDatos.Clear();

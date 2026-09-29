@@ -18,7 +18,7 @@ namespace CapaVista_Seguridad
         public FrmNavegador()
         {
             InitializeComponent();
-            navegador1.NavegadorMetConfigurar("video", 4, 5);
+            navegador1.NavegadorMetConfigurar("tblbodegas", 4, 5);
             SeguridadMetInterceptarAyuda();
         }
         

@@ -22,9 +22,18 @@ namespace CapaModelo_Seguridad.Entidades
 {
     public class ClsPrueba
     {
-        public int CodigoBodega { get; set; }
-        public string NombreBodega { get; set; }
-        
+        public int IdVideo { get; set; }
+        public string TituloVideo { get; set; }
+        public string GeneroVideo { get; set; }
+        public double PrecioRentaVideo { get; set; }
+        public int StockVideo { get; set; }
+       
+        public string CodigoVideo { get; set; }
+        public string DirectorVideo { get; set; }
+        public int AnioVideo { get; set; }
+        public string ClasificacionVideo { get; set; }
+        public int DuracionVideo { get; set; }
+        public string IdiomaVideo { get; set; }
         public bool IsActive { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
